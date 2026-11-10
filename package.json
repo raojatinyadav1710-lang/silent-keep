@@ -1,0 +1,9 @@
+{
+  "name": "silent-keep",
+  "version": "1.0.0",
+  "description": "End-to-end encrypted chat with a medieval knight theme. No dependencies.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}

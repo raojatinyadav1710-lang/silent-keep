@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Silent Keep</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- GATE: create or enter a chamber -->
+<main id="gate" class="screen">
+  <div class="veil"></div>
+  <section class="card">
+    <h1>SILENT KEEP</h1>
+    <p class="tag">Words sealed in iron. Only the sworn may read them.</p>
+
+    <button id="create" class="btn">Forge a new chamber</button>
+    <p class="or">or</p>
+    <input id="joinlink" type="text" placeholder="Paste an invitation link" autocomplete="off" spellcheck="false">
+    <button id="join" class="btn ghost">Enter the chamber</button>
+
+    <ul class="vows">
+      <li>Messages are sealed in your own browser with AES-256.</li>
+      <li>The key lives after the <b>#</b> in the link and never reaches the server.</li>
+      <li>Nothing is stored. Close the tab and the words are gone.</li>
+    </ul>
+    <p class="err" id="gateerr"></p>
+    <button id="verify" class="link">Verify this keep has not been tampered with</button>
+  </section>
+</main>
+
+<!-- CHAMBER -->
+<main id="chamber" class="screen hidden">
+  <header>
+    <div>
+      <strong>SILENT KEEP</strong>
+      <span id="status" class="status">gathering...</span>
+    </div>
+    <div class="actions">
+      <button id="copy" class="small">Copy invitation</button>
+      <button id="burn" class="small danger">Leave and burn</button>
+    </div>
+  </header>
+
+  <div class="fp">Shared seal: <code id="fp"></code> <span>(both sides should see the same sigil)</span></div>
+
+  <div id="log" aria-live="polite"></div>
+
+  <form id="form" autocomplete="off">
+    <input id="name" type="text" maxlength="24" placeholder="Your name" autocomplete="off">
+    <input id="msg" type="text" maxlength="2000" placeholder="Speak, knight..." autocomplete="off" required>
+    <button class="btn send" type="submit">Send</button>
+  </form>
+</main>
+
+<!-- VERIFY DIALOG -->
+<dialog id="dlg">
+  <h2>Integrity check</h2>
+  <p>This compares the code your browser is running against the fingerprints the server publishes. For real safety, compare them with a copy you wrote down earlier or that a trusted friend confirms.</p>
+  <pre id="dlgout">checking...</pre>
+  <button id="dlgclose" class="btn ghost">Close</button>
+</dialog>
+
+<script src="/app.js"></script>
+</body>
+</html>
